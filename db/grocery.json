@@ -1,0 +1,50 @@
+[
+  {
+    "id": 1,
+    "title": "Wheat bread",
+    "price": 5000,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1044/2210/products/image_2f2b34dc-57e2-4b16-bcc5-6170240e1b9d_large.jpg?v=1616041124",
+    "tag": "bakery",
+    "UserId": 1
+  },
+  {
+    "id": 2,
+    "title": "Sweet Pepper",
+    "price": 21000,
+    "tag": "vegetables",
+    "imageUrl": "https://www.highmowingseeds.com/media/catalog/product/cache/47e325b677851f562e223168f21f4516/2/7/2769.jpg ",
+    "UserId": 1
+  },
+  {
+    "id": 3,
+    "title": "Spinach",
+    "price": 19000,
+    "tag": "vegetables",
+    "imageUrl": "https://www.highmowingseeds.com/media/catalog/product/cache/47e325b677851f562e223168f21f4516/2/8/2886.jpg",
+    "UserId": 1
+  },
+  {
+    "id": 4,
+    "title": "Watermelon",
+    "price": 30000,
+    "tag": "fruits",
+    "imageUrl": "https://www.highmowingseeds.com/media/catalog/product/cache/47e325b677851f562e223168f21f4516/3/1/3196.jpg",
+    "UserId": 1
+  },
+  {
+    "id": 5,
+    "title": "Sun Flower",
+    "price": 30000,
+    "tag": "flowers",
+    "imageUrl": "https://www.highmowingseeds.com/media/catalog/product/cache/47e325b677851f562e223168f21f4516/7/0/7096.jpg",
+    "UserId": 2
+  },
+  {
+    "id": 6,
+    "title": "California Orange Poppy",
+    "price": 30000,
+    "tag": "flowers",
+    "imageUrl": "https://www.highmowingseeds.com/media/catalog/product/cache/47e325b677851f562e223168f21f4516/7/0/7094.jpg",
+    "UserId": 2
+  }
+]
