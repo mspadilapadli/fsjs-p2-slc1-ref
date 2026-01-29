@@ -48,5 +48,16 @@ class Controller {
             next(error);
         }
     }
+
+    static async getGroceries(req, res, next) {
+        try {
+            let data = await Grocery.findAll();
+            // console.log(data);
+            res.status(200).json(data);
+        } catch (error) {
+            // console.log(error);
+            res.status(500).json({ message: `Internal Server Error` });
+        }
+    }
 }
 module.exports = Controller;
