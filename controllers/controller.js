@@ -59,5 +59,25 @@ class Controller {
             res.status(500).json({ message: `Internal Server Error` });
         }
     }
+
+    static async postGroceries(req, res, next) {
+        try {
+            const { title, price, tag, imageUrl } = req.body;
+            // console.log(req.body);
+            let data = await Grocery.create({
+                title,
+                price,
+                tag,
+                imageUrl,
+                UserId: req.user.id, //need to req.user.id
+            });
+            res.status(201).json({ message: `data created`, data });
+        } catch (error) {
+            // console.log(error);
+            next(error);
+            // // error 500 dan 400 sequelizeValodriton
+            // res.status(500).json(console.log(error));
+        }
+    }
 }
 module.exports = Controller;
