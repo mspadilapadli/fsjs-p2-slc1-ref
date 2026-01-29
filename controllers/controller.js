@@ -106,5 +106,20 @@ class Controller {
             next(error);
         }
     }
+
+    static async deleteGroceries(req, res, next) {
+        try {
+            const { id } = req.params;
+            let data = await Grocery.findByPk(id);
+            if (!data) throw { name: `Data not found` };
+            await Grocery.destroy({ where: { id } });
+            res.status(200).json({
+                message: `Grocery ${data.title} item has been deleted`,
+            });
+        } catch (error) {
+            next(error);
+            // console.log(error);
+        }
+    }
 }
 module.exports = Controller;
