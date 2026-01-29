@@ -79,5 +79,32 @@ class Controller {
             // res.status(500).json(console.log(error));
         }
     }
+
+    static async putGroceries(req, res, next) {
+        try {
+            const { id } = req.params;
+            const { title, price, tag, imageUrl, UserId } = req.body;
+            let data = await Grocery.findByPk(id);
+            if (!data) throw { name: `notFound` };
+            let dataUpdate = {
+                title,
+                price,
+                tag,
+                imageUrl,
+                UserId: req.user.id, //need to req.user.id
+            };
+            await Grocery.update(dataUpdate, {
+                where: { id },
+            });
+            let updated = await Grocery.findByPk(id);
+            res.status(200).json({
+                message: "Grocery item has been updated",
+                updated,
+            });
+        } catch (error) {
+            console.log(error);
+            next(error);
+        }
+    }
 }
 module.exports = Controller;
