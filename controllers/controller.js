@@ -17,34 +17,28 @@ class Controller {
                 notif,
             });
         } catch (error) {
-            // console.log(error.name);
             next(error);
-            // console.log(error);
         }
     }
 
     static async login(req, res, next) {
         try {
             const { email, password } = req.body;
-            // console.log(req.body);
+
             if (!email || !password) throw { name: `InvalidInput` };
 
             let user = await User.findOne({ where: { email } });
             if (!user) throw { name: `InvalidUser` };
-            // console.log(user);
 
             let compare = comparePass(password, user.password);
             if (!compare) throw { name: `InvalidUser` };
-            // console.log(compare);
 
             let token = createToken({ id: user.id });
-            // console.log(token, "token");
 
             res.status(200).json({
                 access_token: token,
             });
         } catch (error) {
-            // console.log(error);
             next(error);
         }
     }
@@ -52,10 +46,9 @@ class Controller {
     static async getGroceries(req, res, next) {
         try {
             let data = await Grocery.findAll();
-            // console.log(data);
+
             res.status(200).json(data);
         } catch (error) {
-            // console.log(error);
             res.status(500).json({ message: `Internal Server Error` });
         }
     }
@@ -63,7 +56,7 @@ class Controller {
     static async postGroceries(req, res, next) {
         try {
             const { title, price, tag, imageUrl } = req.body;
-            // console.log(req.body);
+
             let data = await Grocery.create({
                 title,
                 price,
@@ -73,10 +66,7 @@ class Controller {
             });
             res.status(201).json({ message: `data created`, data });
         } catch (error) {
-            // console.log(error);
             next(error);
-            // // error 500 dan 400 sequelizeValodriton
-            // res.status(500).json(console.log(error));
         }
     }
 
@@ -118,7 +108,6 @@ class Controller {
             });
         } catch (error) {
             next(error);
-            // console.log(error);
         }
     }
 }
