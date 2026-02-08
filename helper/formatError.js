@@ -9,6 +9,9 @@ const formateSequelizeError = (error) => {
         if (error.name === "SequelizeUniqueConstraintError") {
             errors[err.path] =
                 UNIQUE_ERROR_MESSAGE[err.path] || "Duplicate value";
+        } else {
+            // validation error
+            errors[err.path] = err.message;
         }
     });
     return errors;
