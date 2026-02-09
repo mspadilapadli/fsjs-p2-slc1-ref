@@ -9,6 +9,11 @@ const authentication = async (req, res, next) => {
 
         let [bearer, token] = getToken.split(" ");
         // console.log(bearer);
+        if (bearer !== `Bearer`) throw { name: `Unauthorized` };
+
+        let payload = verifyToken(token);
+
+        req.user = { id: user.id };
 
         next();
     } catch (error) {
