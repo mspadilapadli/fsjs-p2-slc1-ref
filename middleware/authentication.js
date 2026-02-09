@@ -20,7 +20,7 @@ const authentication = async (req, res, next) => {
 
         req.user = { id: user.id };
 
-        next();
+        next(); //next to authorize or ctrl
     } catch (error) {
         console.log(error);
         next(error);
