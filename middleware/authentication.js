@@ -8,10 +8,15 @@ const authentication = async (req, res, next) => {
         if (!getToken) throw { name: `Unauthorized` };
 
         let [bearer, token] = getToken.split(" ");
-        // console.log(bearer);
+
         if (bearer !== `Bearer`) throw { name: `Unauthorized` };
 
         let payload = verifyToken(token);
+
+        if (!payload) throw { name: `Unauthorized` };
+
+        let user = await User.findByPk(payload.id);
+        if (!user) throw { name: `Unauthorized` };
 
         req.user = { id: user.id };
 
